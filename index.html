@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ay3ent</title>
+    <meta
+      name="description"
+      content="Neon bio page for ay3ent with intro, reactive background, and custom music player."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-stack" aria-hidden="true">
+      <div class="background-gif"></div>
+      <div class="background-vignette"></div>
+      <div class="background-grid"></div>
+      <div class="ambient-aurora aurora-left"></div>
+      <div class="ambient-aurora aurora-right"></div>
+      <div class="ambient-particles" id="particles"></div>
+    </div>
+
+    <div class="intro-screen" id="introScreen" tabindex="0" role="button" aria-label="Enter site">
+      <div class="intro-glow"></div>
+      <div class="intro-content">
+        <p class="intro-kicker">ay3ent bio experience</p>
+        <h1 class="intro-title">click to enter</h1>
+        <p class="intro-subtitle">click, tap, or press any key</p>
+      </div>
+    </div>
+
+    <main class="site-shell" id="siteShell">
+      <section class="bio-card" id="bioCard">
+        <div class="card-highlight" aria-hidden="true"></div>
+
+        <div class="identity-panel">
+          <div class="avatar-ring">
+            <img
+              class="avatar"
+              src="avatar.jpg"
+              alt="ay3ent avatar"
+              onerror="this.closest('.avatar-ring').classList.add('avatar-missing')"
+            />
+          </div>
+
+          <div class="name-wrap">
+            <h2 class="typed-name" id="typedName" aria-label="ay3ent"></h2>
+            <p class="tagline">streamer / editor / late night energy</p>
+          </div>
+
+          <div class="social-list">
+            <a
+              class="social-button"
+              href="https://twitch.tv/ay3ent"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Twitch profile"
+            >
+              <span class="social-icon-wrap">
+                <img src="twitch.png" alt="" class="social-icon" />
+              </span>
+              <span class="social-text">twitch</span>
+            </a>
+
+            <a
+              class="social-button"
+              href="https://t.me/ay3ent"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Telegram profile"
+            >
+              <span class="social-icon-wrap">
+                <img src="tg.png" alt="" class="social-icon" />
+              </span>
+              <span class="social-text">telegram</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="player-panel">
+          <div class="player-copy">
+            <p class="player-kicker">now playing</p>
+            <h3 class="player-title">mus.mp3</h3>
+            <p class="player-subtitle">neon pulse session</p>
+          </div>
+
+          <div class="visualizer" id="visualizer" aria-hidden="true">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+
+          <div class="player-controls">
+            <button class="control-button" id="playToggle" type="button" aria-label="Play or pause">
+              <span class="control-icon" id="playIcon">▶</span>
+            </button>
+
+            <div class="timeline-wrap">
+              <span class="time-label" id="currentTime">0:00</span>
+              <input
+                class="timeline"
+                id="timeline"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                aria-label="Track progress"
+              />
+              <span class="time-label" id="duration">0:00</span>
+            </div>
+
+            <div class="volume-wrap">
+              <button class="control-button volume-button" id="muteToggle" type="button" aria-label="Mute audio">
+                <span class="control-icon" id="volumeIcon">◉</span>
+              </button>
+              <input
+                class="volume-slider"
+                id="volumeSlider"
+                type="range"
+                min="0"
+                max="1"
+                value="0.65"
+                step="0.01"
+                aria-label="Volume"
+              />
+            </div>
+          </div>
+
+          <div class="player-meta">
+            <span class="meta-pill" id="audioStatus">waiting for intro</span>
+            <span class="meta-pill">reactive background enabled</span>
+            <span class="meta-pill">glass mode online</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <audio id="audioPlayer" src="mus.mp3" preload="auto" loop></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
